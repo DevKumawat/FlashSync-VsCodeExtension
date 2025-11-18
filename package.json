@@ -1,0 +1,73 @@
+{
+  "name": "flashsync",
+  "displayName": "FlashSync",
+  "publisher": "DevendraKumawat",
+  "icon": "images/icon.png",
+  "description": "Lightning-fast live UI updates for HTML projects — instant HTML/CSS sync with no browser reloads.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": ["Other"],
+  "keywords": [
+    "live server",
+    "live preview",
+    "html",
+    "css",
+    "web development",
+    "reload",
+    "sync",
+    "live edit"
+  ],
+
+  "main": "./out/extension.js",
+
+  "activationEvents": [
+    "onCommand:flashsync.start",
+    "onCommand:flashsync.stop",
+    "onCommand:flashsync.openFile"
+  ],
+
+  "contributes": {
+    "commands": [
+      {
+        "command": "flashsync.start",
+        "title": "FlashSync: Start (Go Live)"
+      },
+      {
+        "command": "flashsync.stop",
+        "title": "FlashSync: Stop"
+      },
+      {
+        "command": "flashsync.openFile",
+        "title": "FlashSync: Open with Live Preview"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "flashsync.openFile",
+          "when": "resourceExtname == .html",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+
+  "dependencies": {
+    "ws": "^8.18.3"
+  },
+
+  "devDependencies": {
+    "@types/node": "22.x",
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.9.3",
+    "vscode": "^1.1.37"
+  }
+}
